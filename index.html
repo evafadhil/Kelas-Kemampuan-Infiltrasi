@@ -37,7 +37,7 @@
         <script src="js/leaflet-measure.js"></script>
         <script src="data/district_jwdiy_1.js"></script>
         <script src="data/KemampuanInfiltrasi_2.js"></script>
-        <script src="data/sungai_wedi_3.js"></script>
+        <script src="data/JalanUtama_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -161,7 +161,7 @@
             return {
                 pane: 'pane_district_jwdiy_1',
                 opacity: 1,
-                color: 'rgba(247,0,0,1.0)',
+                color: 'rgba(246,255,232,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
@@ -285,7 +285,7 @@
         });
         bounds_group.addLayer(layer_KemampuanInfiltrasi_2);
         map.addLayer(layer_KemampuanInfiltrasi_2);
-        function pop_sungai_wedi_3(feature, layer) {
+        function pop_JalanUtama_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -305,16 +305,7 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['NAMOBJ'] !== null ? autolinker.link(feature.properties['NAMOBJ'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <td colspan="2">' + (feature.properties['REMARK'] !== null ? autolinker.link(feature.properties['REMARK'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['LCODE'] !== null ? autolinker.link(feature.properties['LCODE'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Panjang'] !== null ? autolinker.link(feature.properties['Panjang'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -324,11 +315,11 @@
             popup.setContent(updatedContent);
         }
 
-        function style_sungai_wedi_3_0() {
+        function style_JalanUtama_3_0() {
             return {
-                pane: 'pane_sungai_wedi_3',
+                pane: 'pane_JalanUtama_3',
                 opacity: 1,
-                color: 'rgba(1,60,255,1.0)',
+                color: 'rgba(237,7,7,1.0)',
                 dashArray: '',
                 lineCap: 'square',
                 lineJoin: 'bevel',
@@ -337,23 +328,23 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_sungai_wedi_3');
-        map.getPane('pane_sungai_wedi_3').style.zIndex = 403;
-        map.getPane('pane_sungai_wedi_3').style['mix-blend-mode'] = 'normal';
-        var layer_sungai_wedi_3 = new L.geoJson(json_sungai_wedi_3, {
+        map.createPane('pane_JalanUtama_3');
+        map.getPane('pane_JalanUtama_3').style.zIndex = 403;
+        map.getPane('pane_JalanUtama_3').style['mix-blend-mode'] = 'normal';
+        var layer_JalanUtama_3 = new L.geoJson(json_JalanUtama_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_sungai_wedi_3',
-            layerName: 'layer_sungai_wedi_3',
-            pane: 'pane_sungai_wedi_3',
-            onEachFeature: pop_sungai_wedi_3,
-            style: style_sungai_wedi_3_0,
+            dataVar: 'json_JalanUtama_3',
+            layerName: 'layer_JalanUtama_3',
+            pane: 'pane_JalanUtama_3',
+            onEachFeature: pop_JalanUtama_3,
+            style: style_JalanUtama_3_0,
         });
-        bounds_group.addLayer(layer_sungai_wedi_3);
-        map.addLayer(layer_sungai_wedi_3);
+        bounds_group.addLayer(layer_JalanUtama_3);
+        map.addLayer(layer_JalanUtama_3);
         var baseMaps = {};
         var overlaysTree = [
-            {label: '<img src="legend/sungai_wedi_3.png" /> sungai_wedi', layer: layer_sungai_wedi_3},
+            {label: '<img src="legend/JalanUtama_3.png" /> Jalan Utama', layer: layer_JalanUtama_3},
             {label: 'Kemampuan Infiltrasi<br /><table><tr><td style="text-align: center;"><img src="legend/KemampuanInfiltrasi_2_Kecil0.png" /></td><td>Kecil</td></tr><tr><td style="text-align: center;"><img src="legend/KemampuanInfiltrasi_2_SangatKecil1.png" /></td><td>Sangat Kecil</td></tr><tr><td style="text-align: center;"><img src="legend/KemampuanInfiltrasi_2_2.png" /></td><td></td></tr></table>', layer: layer_KemampuanInfiltrasi_2},
             {label: '<img src="legend/district_jwdiy_1.png" /> district_jw-diy', layer: layer_district_jwdiy_1},
             {label: "Google Satellite", layer: layer_GoogleSatellite_0},]
